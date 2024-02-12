@@ -3,6 +3,7 @@ package com.patterns.spring;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import com.patterns.spring.RealWorld.Shop;
 import com.patterns.spring.RealWorld.Builder.VehicleBuilder;
 import com.patterns.spring.RealWorld.Builder.ConcreteBuilder.CarBuilder;
 import com.patterns.spring.RealWorld.Builder.ConcreteBuilder.MotorcycleBuilder;
@@ -23,29 +24,24 @@ public class Application {
 	}
 
 	public static void testRealWorld() {
+        Shop shop = new Shop();
         VehicleBuilder builder;
+        
         // Creating a motorcycle
         builder = new MotorcycleBuilder();
-        builder.buildFrame();
-        builder.buildEngine();
-        builder.buildWheels();
-        builder.buildDoors();
+        shop.Construct(builder);
         Vehicle motorcycle = builder.getVehicle();
         System.out.println(motorcycle);
+
         // Creating a car
         builder = new CarBuilder();
-        builder.buildFrame();
-        builder.buildEngine();
-        builder.buildWheels();
-        builder.buildDoors();
+        shop.Construct(builder);
         Vehicle car = builder.getVehicle();
         System.out.println(car);
+
         // Creating a scooter
         builder = new ScooterBuilder();
-        builder.buildFrame();
-        builder.buildEngine();
-        builder.buildWheels();
-        builder.buildDoors();
+        shop.Construct(builder);
         Vehicle scooter = builder.getVehicle();
         System.out.println(scooter);
     }
