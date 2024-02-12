@@ -3,6 +3,11 @@ package com.patterns.spring;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import com.patterns.spring.RealWorld.Builder.VehicleBuilder;
+import com.patterns.spring.RealWorld.Builder.ConcreteBuilder.CarBuilder;
+import com.patterns.spring.RealWorld.Builder.ConcreteBuilder.MotorcycleBuilder;
+import com.patterns.spring.RealWorld.Builder.ConcreteBuilder.ScooterBuilder;
+import com.patterns.spring.RealWorld.Vehicles.Vehicle;
 import com.patterns.spring.Structural.Director;
 import com.patterns.spring.Structural.Builder.ConcreteBuilder.ConcreteBuilder1;
 import com.patterns.spring.Structural.Builder.ConcreteBuilder.ConcreteBuilder2;
@@ -13,8 +18,37 @@ public class Application {
 	public static void main(String[] args) {
 		SpringApplication.run(Application.class, args);
 
-		testStructural();
+		// testStructural();
+		testRealWorld();
 	}
+
+	public static void testRealWorld() {
+        VehicleBuilder builder;
+        // Creating a motorcycle
+        builder = new MotorcycleBuilder();
+        builder.buildFrame();
+        builder.buildEngine();
+        builder.buildWheels();
+        builder.buildDoors();
+        Vehicle motorcycle = builder.getVehicle();
+        System.out.println(motorcycle);
+        // Creating a car
+        builder = new CarBuilder();
+        builder.buildFrame();
+        builder.buildEngine();
+        builder.buildWheels();
+        builder.buildDoors();
+        Vehicle car = builder.getVehicle();
+        System.out.println(car);
+        // Creating a scooter
+        builder = new ScooterBuilder();
+        builder.buildFrame();
+        builder.buildEngine();
+        builder.buildWheels();
+        builder.buildDoors();
+        Vehicle scooter = builder.getVehicle();
+        System.out.println(scooter);
+    }
 
 	public static void testStructural() {
 		Director director = new Director();
